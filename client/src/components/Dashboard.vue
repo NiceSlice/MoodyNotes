@@ -13,12 +13,13 @@
     <div id="notes-wrapper">
       <Note v-for="note in notes"
             v-bind:key="note.id"
+            v-bind:date="note.date"
             v-bind:title="note.title"
             v-bind:content="note.content"
       />
     </div>
 
-    <NoteEditor v-if="noteEditorActive" />
+    <NoteEditor v-bind:active="noteEditorActive" />
 
     <div v-on:click="toggleNoteEditor" id="note-editor-toggle-button">
       <img id="note-editor-toggle-button-symbol" v-bind:class="{'plus-symbol': true, 'x-symbol': noteEditorActive}" src="../assets/plus.png" />
@@ -48,12 +49,12 @@ export default defineComponent({
         id: 1,
         title: 'Title',
         content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis rhoncus quis ipsum eget lacinia. Mauris at ante est. Donec finibus, risus condimentum condimentum ornare, risus diam cursus magna, ac pellentesque erat quam nec neque.',
-        date: '2021'
+        date: '23 Apr 2021'
       }, {
         id: 2,
         title: 'Different Title',
         content: 'Fusce placerat, ex id blandit pharetra, quam lectus ultricies arcu, non mollis dolor magna ac urna. In quis nisl a dolor elementum euismod non sit amet neque. Cras risus ipsum, dignissim a felis nec, dictum porta lorem. Nulla non ante ac lorem finibus condimentum. Integer viverra neque non ligula feugiat, sit amet blandit lacus venenatis.',
-        date: '2021'
+        date: '16 Mar 2021'
       }]
     }
   },
@@ -113,6 +114,10 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#note-editor-toggle-button:hover {
+  background-color: #8d85abff;
 }
 
 .plus-symbol {

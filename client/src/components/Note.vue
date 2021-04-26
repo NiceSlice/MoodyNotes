@@ -1,5 +1,11 @@
 <template>
   <div class="note">
+    <div class="note-header">
+      <h2>{{ date }}</h2>
+      <div class="delete-note-button">
+        <img class="delete-note-x-symbol" src="../assets/plus.png" />
+      </div>
+    </div>
     <h1>{{ title }}</h1>
     <p>{{ content }}</p>
   </div>
@@ -11,6 +17,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'Note',
   props: {
+    date: String,
     title: String,
     content: String
   }
@@ -26,10 +33,29 @@ export default defineComponent({
   margin-right: 0;
   color: white;
   max-width: 20rem;
+  cursor: pointer;
+}
+.note:hover {
+  background-color: #8d85abff;
+}
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-note-x-symbol {
+  height: 1rem;
+  transform: rotate(45deg);
+  cursor: pointer;
 }
 
 h1 {
   font-size: 1rem;
+  margin: 0;
+}
+h2 {
+  font-size: 0.8rem;
   margin: 0;
 }
 p {
